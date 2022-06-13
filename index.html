@@ -616,15 +616,16 @@ class Pelicula{
     this.validarTitulo(titulo);
     this.validarDirector(director);
     this.validarEstreno(estreno);
+    this.validarPais(pais);
   }
   
   
   validarArreglo(propiedad,valor){
     if(!valor) return console.warn(`${propiedad} "${valor}" está vacío `);
 
-    if(!(valor instanceof Array)) return console.error(`${propiedad} "${valor}" no yiene datos`);
+    if(!(valor instanceof Array)) return console.error(`${propiedad} "${valor}" no tiene datos`);
     for (let cadena of valor){
-      if(typeof cadena !== "string") return console.error(`${cadena}` ingresado,No es una cadena de texto);
+      if(typeof cadena !== "string") return console.error(`${cadena} ingresado,No es una cadena de texto`)
 
     }
     return true;
@@ -672,16 +673,21 @@ class Pelicula{
           return console.error(`IMBD id "${estreno}" no es válido,debe tener 4 cifras`);
         }
 
-        validarPais(pais)
+        validarPais(pais){
+          this.validarArreglo("Pais",pais);
+        }
+        
 
-
+      
 }
   
 
 const peli = new Pelicula({
   id: "aa4567891",
   titulo: "Titulo de pelicula",
-  director: "Director de la pelicula"
+  director: "Director de la pelicula",
+  estreno : 1999,
+  pais : ["Mexico","Francia","Argentina",9]
 })
 
 
