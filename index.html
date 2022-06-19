@@ -603,22 +603,33 @@ Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.*/
 // clasificaion imbm 
 
 class Pelicula{
-  constructor({id,titulo,director,estreno,pais,genero,clasificaion}){
+  constructor({id,titulo,director,estreno,pais,genero,calificacion}){
     this.id = id;
     this.titulo = titulo;
     this.director = director;
     this.estreno = estreno;
     this.pais = pais;
     this.genero = genero;
-    this.clasificaion = clasificaion;
+    this.calificacion = calificacion;
 
     this.validarIMDB(id);
     this.validarTitulo(titulo);
     this.validarDirector(director);
     this.validarEstreno(estreno);
     this.validarPais(pais);
+    this.validarGeneros(genero);
+    this.validarCalificacion(calificacion);
   }
   
+  static get listaGeneros(){
+    return ["Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary" ,"Drama", 
+"Family", "Fantasy", "Film Noir", "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", "News", "Reality-TV", 
+"Romance", "Sci-Fi", "Short", "Sport", "Talk-Show", "Thriller", "War","Western"];
+  }
+
+  static generosAceptados(){
+    return console.info(`Los géneros aceptados son: ${Pelicula.listaGeneros.join(", ")}`)
+  }
   
   validarArreglo(propiedad,valor){
     if(!valor) return console.warn(`${propiedad} "${valor}" está vacío `);
@@ -677,23 +688,46 @@ class Pelicula{
           this.validarArreglo("Pais",pais);
         }
         
+        validarGeneros(generos){
+         if(this.validarArreglo("Generos",generos)){
+          for(let genero of generos){
+            //console.log(genero, Pelicula.listaGeneros.includes(genero));
+            if(!Pelicula.listaGeneros.includes(genero)){
+              console.log(`Género(s) incorrectos "${generos.join(", ")}"`);
+              Pelicula.generosAceptados();
+            }
+          }
+         }
 
+        }
+        validarCalificacion(calificacion){
+      if(this.validarNumero("Calificación",calificacion))
+          return(calificacion < 0 || calificacion > 10)
+          ?console.error("La calificación tiene que estar entre 0 y 10")
+          :this.calificacion = calificacion.toFixed(1);
+        }
+        fichaTecnica(){
+          console.info(`Ficha tecnica:\nTitulo:"${this.titulo}"\nDirector:"${this.director}"\nAño:"${this.estreno}"\nPais:"${this.pais.join("-")}"\nGeneros:"${this.generos.join(" ,")}"\nCalificación:"${this.calificacion}"\nIMDB Id:"${this.id}"`);
+        }
+      }
       
-}
-  
 
+  
 const peli = new Pelicula({
   id: "aa4567891",
   titulo: "Titulo de pelicula",
   director: "Director de la pelicula",
   estreno : 1999,
-  pais : ["Mexico","Francia","Argentina",9]
+  pais : ["Mexico","Francia","Argentina"],
+  genero: ["Comedy","Animation","Action"],
+  calificacion: 8
 })
 
+peli.fichaTecnica();
 
 
 
-
-    </script>
+</script>
+    
 </body>
 </html>
