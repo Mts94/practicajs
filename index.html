@@ -707,24 +707,56 @@ class Pelicula{
           :this.calificacion = calificacion.toFixed(1);
         }
         fichaTecnica(){
-          console.info(`Ficha tecnica:\nTitulo:"${this.titulo}"\nDirector:"${this.director}"\nAño:"${this.estreno}"\nPais:"${this.pais.join("-")}"\nGeneros:"${this.generos.join(" ,")}"\nCalificación:"${this.calificacion}"\nIMDB Id:"${this.id}"`);
+          console.info(`Ficha tecnica:\nTitulo:"${this.titulo}"\nDirector:"${this.director}"\nAño:"${this.estreno}"\nPais:"${this.pais.join("-")}"\nGeneros:"${this.genero.join(",")}"\nCalificación:"${this.calificacion}"\nIMDB Id:"${this.id}"`)
         }
       }
       
 
   
-const peli = new Pelicula({
-  id: "aa4567891",
-  titulo: "Titulo de pelicula",
-  director: "Director de la pelicula",
-  estreno : 1999,
-  pais : ["Mexico","Francia","Argentina"],
-  genero: ["Comedy","Animation","Action"],
-  calificacion: 8
-})
+// const peli = new Pelicula({
+//   id: "aa4567891",
+//   titulo: "Titulo de pelicula",
+//   director: "Director de la pelicula",
+//   estreno : 1999,
+//   pais : ["Mexico","Francia","Argentina"],
+//   genero: ["Comedy","Animation","Action"],
+//   calificacion: 8
+// })
 
-peli.fichaTecnica();
+//peli.fichaTecnica();
 
+const misPelis = [
+  {
+    id:"tt0317248",
+    titulo:"Ciudad de Dios",
+    director: "Fernando Meirelles,Kátia Lund",
+    estreno: 2002,
+    pais: ["Brasil","Francia","Alemania"],
+    genero:["Crime","Drama"],
+    calificacion:8.6
+
+  },
+   {
+    id:"tt0120815",
+    titulo:"Salvar al soldado Ryan",
+    director: "Steven Spielberg",
+    estreno: 1998,
+    pais: ["Estados Unidos"],
+    genero:["Drama","War"],
+    calificacion:8.6
+  },
+  {
+    id:"tt0120586",
+    titulo:"American History X",
+    director: "Tony Kaye",
+    estreno: 1998 ,
+    pais: ["Estados unidos"],
+    genero:["Crime","Drama"],
+    calificacion: 8.5
+  }
+]
+
+misPelis.forEach(el => new Pelicula(el).fichaTecnica());
 
 
 </script>
