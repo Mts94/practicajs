@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asincronia en javaScript</title>
+</head>
+<body>
+    <h1>Asincronia en javaScript</h1>
+
+    <script>
+       /*/ console.log("inicio")
+        setTimeout(() => {
+            console.log("ejecutando un setTimeout,esto se ejecuta una sola vez")
+        }, 1000);
+
+
+        setInterval(() => {
+            console.log("ejecutando un setInterval,esto se ejecuta indefinidamente cada cierto tiempo")
+        }, 5000);*/
+
+
+        /*Antes de explicar como funciona el modelo en javaScript 
+        es importante entender algunos conceptos:
+        Procesamiento Single thread y Multi thread.
+        javascript trabaja en un modelo asincrono y no bloqueante,por eso es altamente concurrente aunque sea de un solo hilo
+        Los hilo sson las unidades basicas de cada proceso que realiza nuestra maqui
+        ej:"cada vez que nuesto ordenado abre una app levanta un proceso y este trabaja en cierto hilos para cumplir
+        su funcionalidad",hay lenguajes que trabajan en un hilo y otros que rtabajan en varios hilos
+
+
+        Operaciones de CPU y Operaciones de I/O.
+
+        Operaciones de CPU:
+            En un proicesamiento podemos tener operaciones de cpu son 
+            aqullas que vana  estar consumiendo los procesos de nuestro CPU.
+            ej:"Error logico que hace que nuestro loop sea infinitos .,este va aconsumir
+            toda la memoria del navegador y colapsara"
+
+            Operaciones I/O
+
+            Operaciones que van aapsar la mayor parte del tiempo esperando la peticion esperando la peticion 
+            ej:"pago en loinbea esprando que API cobre y lance el mensaje de comllketado"
+        Operaciones concurrentes y paralelas
+
+        Operaciones Concurrentes:
+
+        Cuando dos operaciones comienzan la ejecucion y una depende del avance de la otra asi concurren.
+
+        Paralelismo:
+        
+        Es cuando dos o mas tareas se ejecuntan al mismo tiempo.
+
+        Operaciones Bloqueantes o no bloqueantes
+            Bloqueantes:
+            fase de espera mientras se ejecuta una operacion de nuestro codigo
+            es aquella que no devolvera el control sobre nuestro porgrama hasta que haya terminado toda su tarea
+
+            no-bloqueantes:
+            Se ejecutan y devulvenm el contro sin importar que haya terminado la tarea
+        
+        
+            Operaciones Sincrones y Asincronas
+
+            sincrono: La respuesta de da de inmediato y sigue 
+            asincrono: no esperara el resultado suelta y devulve el control
+
+
+         */
+
+         /*
+         Codigo sincrono bloqueante*/
+            (function(){
+                console.log("Código sincrono");
+                console.log("Inicio");
+
+                    function dos() {
+                        console.log("Dos");
+
+                        
+                    }
+                    function uno() {
+                        console.log("Uno");
+                        dos();
+                        console.log("Tres");
+                        
+                    }
+                    uno();
+                    console.log("Fin")
+            })();
+         /*codigo asincrono no bloqueante
+         */
+         (function(){
+            })();
+    </script>
+</body>
+</html>
