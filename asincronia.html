@@ -121,33 +121,96 @@
 
       //CALLBACKS
 
-      function cuadradoCallback(value, callback) {
-        setTimeout(() => {
-          callback(value, value * value);
-        }, 0 | (Math.random() * 1000));
-      }
+      /*Son funciones que se ejecutan despues de otra,mecanismo por excelencia 
+    de JS para invocar funciones */
 
-      cuadradoCallback(0, (value, result) => {
-        console.log("Inicia callback");
-        console.log(`Callback: ${value},${result}`);
-        cuadradoCallback(2, (value, result) => {
-          console.log("Inicia callback");
-          console.log(`Callback: ${value},${result}`);
-          cuadradoCallback(3, (value, result) => {
-            console.log("Inicia callback");
-            console.log(`Callback: ${value},${result}`);
-            cuadradoCallback(4, (value, result) => {
-              console.log("Inicia callback");
-              console.log(`Callback: ${value},${result}`);
-              cuadradoCallback(5, (value, result) => {
-                console.log("Inicia callback");
-                console.log(`Callback: ${value},${result} 😎`);
-              });
-            });
+      // function cuadradoCallback(value, callback) {
+      //   setTimeout(() => {
+      //     callback(value, value * value);
+      //   }, 0 | (Math.random() * 1000));  
+      // }
 
-          });
-        });
-      });
+      // cuadradoCallback(0, (value, result) => {
+      //   console.log("Inicia callback");
+      //   console.log(`Callback: ${value},${result}`);
+      //   cuadradoCallback(2, (value, result) => {
+      //     console.log("Inicia callback");
+      //     console.log(`Callback: ${value},${result}`);
+      //     cuadradoCallback(3, (value, result) => {
+      //       console.log("Inicia callback");
+      //       console.log(`Callback: ${value},${result}`);
+      //       cuadradoCallback(4, (value, result) => {
+      //         console.log("Inicia callback");
+      //         console.log(`Callback: ${value},${result}`);
+      //         cuadradoCallback(5, (value, result) => {
+      //           console.log("Inicia callback");
+      //           console.log(`Callback: ${value},${result}`);
+      //         });
+      //       });
+      //     });
+      //   });
+      // });
+
+//Promesas en javascript
+
+/* Promesas trabajan con dos recursos principales,las tenemos que ver
+como un if-else,si la promesa se cumple funciona el resolve y 
+si no se cumple se ejecuta el reject*/
+
+//resolve es el retutn pósitivp
+//reject return negativo
+
+
+function cuadradoPromise(value) {
+  if(typeof value !== "number"){
+
+    return Promise.reject("Error,el valor ingreesado no es un número");
+  }
+  return new Promise((resolve,reject) => {
+      setTimeout(() => {
+        resolve({
+          value,
+          result : value*value
+      });    
+      }, 0|Math.random()*1000);
+  });
+  
+}
+//Podemos tener cuantos then como queramos
+cuadradoPromise(0)
+  .then((obj) => {
+    console.log("Inicio promise")
+    console.log(`Promise: ${obj.value},${obj.result}`);
+    return cuadradoPromise(1)
+  })
+  .then((obj) => {
+    
+    console.log(`Promise: ${obj.value},${obj.result}`);
+    return cuadradoPromise(2)
+  })
+  .then((obj) => {
+    
+    console.log(`Promise: ${obj.value},${obj.result}`);
+    return cuadradoPromise("3")
+  })
+  .then((obj) => {
+    
+    console.log(`Promise: ${obj.value},${obj.result}`);
+    return cuadradoPromise(4)
+  })
+  .then((obj) => {
+    
+    console.log(`Promise: ${obj.value},${obj.result}`);
+    return cuadradoPromise(5)
+  }) 
+  .then(obj => {
+    console.log(`Promise : ${obj.value},${obj.result}`);
+    console.log("Fin promise");
+  })
+  .catch(err =>{
+    console.error(err);
+  });
+
     </script>
   </body>
 </html>
