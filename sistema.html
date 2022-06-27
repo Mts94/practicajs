@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema vacacionak</title>
+</head>
+<body>
+
+    <h1>Bienvenidos</h1>
+
+    <script>
+        console.log("***************************************");
+        console.log("***Bienvenidos al sistema vacacional***");
+        console.log("***************************************");
+
+
+        class Trabajador {
+            constructor({nombre,clave,antiguedad}){
+            this.nombre = nombre;
+            this.clave = clave;
+            this.antiguedad = antiguedad;
+
+            this.validarNombre(nombre);
+            this.validarAntiguedad(antiguedad);
+        }
+
+        validarNombre(nombre,valor){
+        if(!valor) return console.warn(`El valor ${nombre} esta vacío`);
+        if(typeof valor !== "string") return console.error(`El valor ${nombre} no es una cadena de texto`);
+        return true;
+        }
+
+        validarAntiguedad(antiguedad,valor){
+            if(!valor) return console.warn(``);
+            if(typeof valor !== "number") return(`El valor ${antiguedad} no es un número`);
+            return true;
+        }
+    } 
+
+const trab = new Trabajador({
+    nombre : "",
+    antiguedad: "15"
+})
+
+    </script>
+    
+</body>
+</html>
