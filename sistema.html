@@ -11,38 +11,72 @@
     <h1>Bienvenidos</h1>
 
     <script>
-        console.log("***************************************");
-        console.log("***Bienvenidos al sistema vacacional***");
-        console.log("***************************************");
+  let trabajador = "";
+  let clase = 0;
+  let antiguedad = 0;
+
+  console.log("***************");
+  console.log("**Bienvendios**");
+  console.log("***************");
+
+  trabajador = prompt("Cual es su nombre?");
+  antiguedad = prompt("Cuantos años lleva trabajando?");
+  clase = prompt("A que departamento pertenece?");
 
 
-        class Trabajador {
-            constructor({nombre,clave,antiguedad}){
-            this.nombre = nombre;
-            this.clave = clave;
-            this.antiguedad = antiguedad;
 
-            this.validarNombre(nombre);
-            this.validarAntiguedad(antiguedad);
-        }
+  if (clase == 1) {
+    if (antiguedad == 1) {
+        console.info(`El trabajador ${trabajador} tiene derecho a 6 dias de vacaciones`);
+        
+    } else if (antiguedad >= 2 && antiguedad <= 6) {
+        console.info(`El trabajador ${trabajador} tiene derecho a 14 dias de vacaciones`);
 
-        validarNombre(nombre,valor){
-        if(!valor) return console.warn(`El valor ${nombre} esta vacío`);
-        if(typeof valor !== "string") return console.error(`El valor ${nombre} no es una cadena de texto`);
-        return true;
-        }
+        
+    } else if (antiguedad >= 7) {
+        console.log(`El trabajdor ${trabajador} tiene derecho a 20 dias de vacaciones`);
+        
+    } else {
+        console.info(` El trabajador no tiene derecho a vacaciones aun`);
+    }
+        
+    }
 
-        validarAntiguedad(antiguedad,valor){
-            if(!valor) return console.warn(``);
-            if(typeof valor !== "number") return(`El valor ${antiguedad} no es un número`);
-            return true;
-        }
-    } 
+    if (clase == 2) {
+    if (antiguedad == 1) {
+        console.info(`El trabajador ${trabajador} tiene derecho a 7 ias de vacaciones`);
+        
+    } else if (antiguedad >= 2 && antiguedad <= 6) {
+        console.info(`El trabajador ${trabajador} tiene derecho a 15 dias de vacaciones`);
 
-const trab = new Trabajador({
-    nombre : "",
-    antiguedad: "15"
-})
+        
+    } else if (antiguedad >= 7) {
+        console.log(`El trabajdor ${trabajador} tiene derecho a 22 dias de vacaciones`);
+        
+    } else {
+        console.info(` El trabajador no tiene derecho a vacaciones aun`);
+    }
+        
+    }
+    if (clase == 3) {
+    if (antiguedad == 1) {
+        console.info(`El trabajador ${trabajador} tiene derecho a 10 dias de vacaciones`);
+        
+    } else if (antiguedad >= 2 && antiguedad <= 6) {
+        console.info(`El trabajador ${trabajador} tiene derecho a 20 dias de vacaciones`);
+
+        
+    } else if (antiguedad >= 7) {
+        console.log(`El trabajdor ${trabajador} tiene derecho a 30 dias de vacaciones`);
+        
+    } else {
+        console.info(` El trabajador no tiene derecho a vacaciones aun`);
+    }
+        
+    }
+    
+  
+
 
     </script>
     
