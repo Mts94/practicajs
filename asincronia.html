@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sp">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -161,56 +161,87 @@ si no se cumple se ejecuta el reject*/
 //reject return negativo
 
 
-function cuadradoPromise(value) {
-  if(typeof value !== "number"){
+// function cuadradoPromise(value) {
+//   if(typeof value !== "number"){
 
-    return Promise.reject("Error,el valor ingreesado no es un número");
+//     return Promise.reject("Error,el valor ingresado no es un número");
+//   }
+//   return new Promise((resolve,reject) => {
+//       setTimeout(() => {
+//         resolve({
+//           value,
+//           result : value*value
+//       });    
+//       }, 0|Math.random()*1000);
+//   });
+  
+// }
+// //Podemos tener cuantos then como queramos
+// cuadradoPromise(0)
+//   .then((obj) => {
+//     console.log("Inicio promise")
+//     console.log(`Promise: ${obj.value},${obj.result}`);
+//     return cuadradoPromise(1);
+//   })
+//   .then((obj) => {
+    
+//     console.log(`Promise: ${obj.value},${obj.result}`);
+//     return cuadradoPromise(2);
+//   })
+//   .then((obj) => {
+    
+//     console.log(`Promise: ${obj.value},${obj.result}`);
+//     return cuadradoPromise(3);
+//   })
+//   .then((obj) => {
+    
+//     console.log(`Promise: ${obj.value},${obj.result}`);
+//     return cuadradoPromise(4);
+//   })
+//   .then((obj) => {
+    
+//     console.log(`Promise: ${obj.value},${obj.result}`);
+//     return cuadradoPromise(5);
+//   }) 
+//   .then(obj => {
+//     console.log(`Promise : ${obj.value},${obj.result}`);
+//     console.log("Fin promise");
+//   })
+//   .catch(err =>{
+//     console.error(err);
+//   });
+
+
+function cuadradoPromise(value) {
+ if(typeof value !== "number"){
+
+    return Promise.reject("Error,el valor ingresado no es un número");
   }
   return new Promise((resolve,reject) => {
-      setTimeout(() => {
-        resolve({
+      setTimeout(() => {         resolve({
           value,
-          result : value*value
-      });    
-      }, 0|Math.random()*1000);
+           result : value*value
+       });    
+       }, 0|Math.random()*1000);
   });
   
-}
-//Podemos tener cuantos then como queramos
-cuadradoPromise(0)
-  .then((obj) => {
-    console.log("Inicio promise")
-    console.log(`Promise: ${obj.value},${obj.result}`);
-    return cuadradoPromise(1)
-  })
-  .then((obj) => {
-    
-    console.log(`Promise: ${obj.value},${obj.result}`);
-    return cuadradoPromise(2)
-  })
-  .then((obj) => {
-    
-    console.log(`Promise: ${obj.value},${obj.result}`);
-    return cuadradoPromise("3")
-  })
-  .then((obj) => {
-    
-    console.log(`Promise: ${obj.value},${obj.result}`);
-    return cuadradoPromise(4)
-  })
-  .then((obj) => {
-    
-    console.log(`Promise: ${obj.value},${obj.result}`);
-    return cuadradoPromise(5)
-  }) 
-  .then(obj => {
-    console.log(`Promise : ${obj.value},${obj.result}`);
-    console.log("Fin promise");
-  })
-  .catch(err =>{
-    console.error(err);
-  });
+ }
 
+ async function funcionAsincronaDeclarada(){
+  try { 
+    cosole.log("Inicio de Async function");
+    let obj = cuadradoPromise(0);
+    console.log(`Async function : ${obj.value} ${obj.result}`);
+     
+
+    obj = cuadradoPromise(1);
+    console.log(`Async function : ${obj.value} ${obj.result}`);
+  } catch (err) {
+    
+  }
+ }
+
+funcionAsincronaDeclarada();
     </script>
   </body>
 </html>
