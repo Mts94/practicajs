@@ -225,23 +225,64 @@ function cuadradoPromise(value) {
        }, 0|Math.random()*1000);
   });
   
- }
+ 
+}
+ 
+async function funcionAsincronaDeclarada(){
+  try{
+    console.log("Inicio de Async function");
+    let obj = await cuadradoPromise(0);
+    console.log(`Async function: ${obj.value},${obj.result}`);
 
- async function funcionAsincronaDeclarada(){
-  try { 
-    cosole.log("Inicio de Async function");
-    let obj = cuadradoPromise(0);
-    console.log(`Async function : ${obj.value} ${obj.result}`);
-     
+    obj = await cuadradoPromise(1);
+    console.log(`Async function: ${obj.value},${obj.result}`);
+    obj = await cuadradoPromise(2);
+    console.log(`Async function: ${obj.value},${obj.result}`);
+    obj = await cuadradoPromise(3);
+    console.log(`Async function: ${obj.value},${obj.result}`);
+    obj = await cuadradoPromise(
+      "4");
+    console.log(`Async function: ${obj.value},${obj.result}`);
+    obj = await cuadradoPromise(5);
+    console.log(`Async function: ${obj.value},${obj.result}`);
 
-    obj = cuadradoPromise(1);
-    console.log(`Async function : ${obj.value} ${obj.result}`);
-  } catch (err) {
-    
+
+    console.log("Fin de Async function");
+  } catch(err){
+    console.error(err);
   }
- }
 
-funcionAsincronaDeclarada();
+  }
+
+  funcionAsincronaDeclarada();
+
+  const functionAsincronaExpresada = async () => {
+    try{
+    let obj = await cuadradoPromise(6);
+    console.log(`Async function: ${obj.value},${obj.result}`);
+
+    obj = await cuadradoPromise(7);
+    console.log(`Async function: ${obj.value},${obj.result}`);
+    obj = await cuadradoPromise(8);
+    console.log(`Async function: ${obj.value},${obj.result}`);
+    obj = await cuadradoPromise(9);
+    console.log(`Async function: ${obj.value},${obj.result}`);
+    obj = await cuadradoPromise(10);
+    console.log(`Async function: ${obj.value},${obj.result}`);
+    obj = await cuadradoPromise(11);
+    console.log(`Async function: ${obj.value},${obj.result}`);
+
+
+    console.log("Fin de Async function");
+  } catch(err){
+    console.error(err);
+  }
+  
+  }
+
+  functionAsincronaExpresada();
+
+
     </script>
   </body>
 </html>
