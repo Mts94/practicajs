@@ -167,12 +167,44 @@ console.log("********************************************")
                 do {
                     console.log(y);
                     y++;
-                } while (y<= 10);
+                } while (y<= 10); 
 
                         
                         
+                    //for en array
+
+                    let numeros = [10,20,30,40,50,60,70,80,90];
+
+                    for (let i = 0;i < numeros.length; i++) {
+                        console.info(numeros[i] + 10);
+                    }
+
+                    //for in
+
+                    let persona = {
+                        nombre: "Juan",
+                        apellido: "Perez",
+                        edad: 30
+                    }
+
+                    for (const propiedad in persona) {
+                            console.log(`key: ${propiedad}, value: ${persona[propiedad]}`);   
+                        }
                     
+
+                        for (const elemento of numeros) {
+                            if (elemento  % 2 === 0) {
+                                console.log(elemento + 5);
+                            }
+                            
+                        }
                 
+let cadena = "Hola mundo!";
+
+for (const caracteres of cadena) {
+    console.log(caracteres + "!");
+}
+
                     
                 
                     
