@@ -19,8 +19,8 @@ console.log(id === id2);
 console.log(typeof id,typeof id2);
 
 
-const NOMBRE = Symbol();
-
+const NOMBRE = Symbol(`nombre`);
+const SALUDAR = Symbol(`saludar`);
 const persona = {
     [NOMBRE]: "Matias",
     apellido: "Arias"
@@ -32,6 +32,69 @@ console.log(persona);
 persona.NOMBRE = "Matias Arias"
 
 console.log(persona);
+
+console.log(persona.NOMBRE);
+
+console.log(persona[NOMBRE]);
+
+
+persona[SALUDAR] = function(){
+    console.log("Hola");
+}
+
+console.log(persona);
+console.log([SALUDAR]);
+
+for (const propiedad in persona) {
+    console.log(propiedad);
+    console.log(persona[propiedad] );
+        
+    
+}
+
+console.log(Object.getOwnPropertySymbols(persona));
+
+const SET = new Set([1,2,3,4,5,6,6,7,8,true,false,false,{},{},"hola","HolA"])
+
+
+console.log(SET);
+console.log(SET.size);
+
+const set = new Set();
+set.add(1);
+set.add(3,);
+set.add(5);
+set.add(5);
+set.add(true);
+set.add(true);
+set.add({});
+set.add({});
+set.add([]);
+console.log(set);
+console.log("Recorriendo SET")
+for (const item of SET) {
+    console.log(item);
+    
+}
+console.log("Recorriendo set")
+set.forEach(item => console.log(item));
+let arr = Array.from(set);
+console.log(arr);
+console.log(arr.length);
+
+console.log(arr[5]);
+
+set.delete(true);
+console.log(set);
+    
+
+set.delete(1);
+console.log(set);
+
+console.log(SET.has("hola"))    
+
+
+
     </script>
 </body>
 </html>
