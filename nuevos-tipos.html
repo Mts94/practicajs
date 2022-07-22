@@ -95,6 +95,56 @@ console.log(SET.has("hola"))
 
 
 
-    </script>
+
+const mapa = new Map();
+mapa.set("nombre","Matias");
+mapa.set("apellido","Arias");
+mapa.set("edad",30);
+
+console.log(mapa);
+console.log(mapa.size);
+console.log(mapa.has("correo"));
+console.log(mapa.has("nombre"));
+console.log(mapa.get("nombre"));
+mapa.set("nombre" ,"Nicolas Arias")
+
+
+
+mapa.set(19,"diecinueve");
+mapa.set(false,"falso");
+mapa.set({},{});
+console.log(mapa);
+
+
+for (const [key, value] of mapa) {
+    console.log(`Llave: ${key} , valor: ${value}`);
+}
+
+
+
+
+const mapa2 = new Map([
+    ["nombre","Matias"],
+    ["apellido","Arias"],
+    ["edad",30],
+    [null,"nulo"]
+])
+console.log(mapa2);
+
+for(const [key,values] of mapa2){
+    console.log(`Llave: ${key} , valor: ${values}`);
+}
+
+
+const llavesMapa2 = [...mapa2.keys()];
+const valoresMpara2 = [...mapa2.values()];
+
+
+
+console.log(llavesMapa2);
+console.log(valoresMpara2);
+
+    
+</script>
 </body>
 </html>
