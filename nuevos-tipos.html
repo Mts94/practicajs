@@ -202,9 +202,93 @@ console.log(ws);
         console.log(wm.get(llave2));
         console.log(wm.get(llave3));
         console.log(wm.get(llave1));
+
+        /*
+        Iterables e Iteradores
+        Cuando hablamos que una variavbles es iterable signifivca que es una estructura de datois lineas que
+        hacen que sus valores sean publicos y se puedan iterar.
+        */
+        /*
+        Iterador : Mecanismo que recorre el elemtos de una estructura de datos.
+        */
+        
+        const iterable = "Hola mundo!";
+
         
 
-    
+        // const iterador = iterable[Symbol.iterator]();//accedemos al iterador de iterable
+
+        // console.log(iterable);
+
+        // console.log(iterador)
+        // console.log(iterador.next());//siempre devolvera un objeto
+        // console.log(iterador.next());
+        // console.log(iterador.next());
+        // console.log(iterador.next());
+        // console.log(iterador.next());
+        // console.log(iterador.next());
+
+            // let  next = iterador.next();
+
+            // while (next.done === false) {
+            //     console.log(next.value);
+            //     next = iterador.next();
+            // }
+                
+            // console.log(next);
+
+
+/*los generadores sirven para volver iterables una funcion*/
+            function* generador(){
+                yield "Hola";
+                console.log("Hola consola  ")
+                yield 2;
+                console.log("seguimos con mas ontrucciones de codigo")
+
+                yield 3;
+                yield 4;
+                yield 5;
+                yield 6;
+                console.log("Aqui termina!")
+            }
+
+            let iterador = generador();
+
+        for (const y of iterador) {
+            console.log(y);
+            
+        }
+
+        const arrox = [...generador()];
+
+        console.log(arrox);
+
+        function cuadrado(valor){
+            setTimeout(() => {
+                return console.log({valor, resultado: valor*valor})
+            } , Math.random() * 1000);
+
+          
+        }
+
+
+        function* generator()
+{
+    console.log("inicioa generator")
+yield cuadrado(0);
+yield cuadrado(1);
+yield cuadrado(2);
+yield cuadrado(3);
+yield cuadrado(4);
+yield cuadrado(5);
+    console.log("finaliza generator")
+}
+    let gen = generator();
+
+    for (const yield of gen) {
+        console.log(yield);
+        
+    }
 
 </script>
 </body>
