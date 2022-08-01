@@ -1,0 +1,14 @@
+{
+    "cadena": "Matias",
+    "numero": "28",
+    "boolean": "false",
+    "arreglo": ["correr", "nadar", "dormir"],
+    "objeto": {
+        "nombre": "Matias",
+        "apellido": "Perez",
+        "edad": "28",
+        "genero": "masculino"
+    },
+    
+    nulo: null
+}

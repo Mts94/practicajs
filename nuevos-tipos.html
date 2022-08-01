@@ -1,295 +1,481 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nuevos tipos</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <h1>Nuevos tipos de datos!</h1>
     <script>
-let id = Symbol("hola");
-let id2 = Symbol("hola");
+      let id = Symbol("hola");
+      let id2 = Symbol("hola");
 
+      console.log(id, id2);
+      console.log(id === id2);
+      console.log(typeof id, typeof id2);
 
-console.log(id,id2)
-console.log(id === id2);
-console.log(typeof id,typeof id2);
+      const NOMBRE = Symbol(`nombre`);
+      const SALUDAR = Symbol(`saludar`);
+      const persona = {
+        [NOMBRE]: "Matias",
+        apellido: "Arias",
+      };
 
+      console.log(persona);
 
-const NOMBRE = Symbol(`nombre`);
-const SALUDAR = Symbol(`saludar`);
-const persona = {
-    [NOMBRE]: "Matias",
-    apellido: "Arias"
-}
+      persona.NOMBRE = "Matias Arias";
 
+      console.log(persona);
 
-console.log(persona);
+      console.log(persona.NOMBRE);
 
-persona.NOMBRE = "Matias Arias"
+      console.log(persona[NOMBRE]);
 
-console.log(persona);
+      persona[SALUDAR] = function () {
+        console.log("Hola");
+      };
 
-console.log(persona.NOMBRE);
+      console.log(persona);
+      console.log([SALUDAR]);
 
-console.log(persona[NOMBRE]);
+      for (const propiedad in persona) {
+        console.log(propiedad);
+        console.log(persona[propiedad]);
+      }
 
+      console.log(Object.getOwnPropertySymbols(persona));
 
-persona[SALUDAR] = function(){
-    console.log("Hola");
-}
+      const SET = new Set([
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        6,
+        7,
+        8,
+        true,
+        false,
+        false,
+        {},
+        {},
+        "hola",
+        "HolA",
+      ]);
 
-console.log(persona);
-console.log([SALUDAR]);
+      console.log(SET);
+      console.log(SET.size);
 
-for (const propiedad in persona) {
-    console.log(propiedad);
-    console.log(persona[propiedad] );
-        
-    
-}
+      const set = new Set();
+      set.add(1);
+      set.add(3);
+      set.add(5);
+      set.add(5);
+      set.add(true);
+      set.add(true);
+      set.add({});
+      set.add({});
+      set.add([]);
+      console.log(set);
+      console.log("Recorriendo SET");
+      for (const item of SET) {
+        console.log(item);
+      }
+      console.log("Recorriendo set");
+      set.forEach((item) => console.log(item));
+      let arr = Array.from(set);
+      console.log(arr);
+      console.log(arr.length);
 
-console.log(Object.getOwnPropertySymbols(persona));
+      console.log(arr[5]);
 
-const SET = new Set([1,2,3,4,5,6,6,7,8,true,false,false,{},{},"hola","HolA"])
+      set.delete(true);
+      console.log(set);
 
+      set.delete(1);
+      console.log(set);
 
-console.log(SET);
-console.log(SET.size);
+      console.log(SET.has("hola"));
 
-const set = new Set();
-set.add(1);
-set.add(3,);
-set.add(5);
-set.add(5);
-set.add(true);
-set.add(true);
-set.add({});
-set.add({});
-set.add([]);
-console.log(set);
-console.log("Recorriendo SET")
-for (const item of SET) {
-    console.log(item);
-    
-}
-console.log("Recorriendo set")
-set.forEach(item => console.log(item));
-let arr = Array.from(set);
-console.log(arr);
-console.log(arr.length);
+      const mapa = new Map();
+      mapa.set("nombre", "Matias");
+      mapa.set("apellido", "Arias");
+      mapa.set("edad", 30);
 
-console.log(arr[5]);
+      console.log(mapa);
+      console.log(mapa.size);
+      console.log(mapa.has("correo"));
+      console.log(mapa.has("nombre"));
+      console.log(mapa.get("nombre"));
+      mapa.set("nombre", "Nicolas Arias");
 
-set.delete(true);
-console.log(set);
-    
+      mapa.set(19, "diecinueve");
+      mapa.set(false, "falso");
+      mapa.set({}, {});
+      console.log(mapa);
 
-set.delete(1);
-console.log(set);
+      for (const [key, value] of mapa) {
+        console.log(`Llave: ${key} , valor: ${value}`);
+      }
 
-console.log(SET.has("hola"))    
+      const mapa2 = new Map([
+        ["nombre", "Matias"],
+        ["apellido", "Arias"],
+        ["edad", 30],
+        [null, "nulo"],
+      ]);
+      console.log(mapa2);
 
+      for (const [key, values] of mapa2) {
+        console.log(`Llave: ${key} , valor: ${values}`);
+      }
 
+      const llavesMapa2 = [...mapa2.keys()];
+      const valoresMpara2 = [...mapa2.values()];
 
+      console.log(llavesMapa2);
+      console.log(valoresMpara2);
 
-const mapa = new Map();
-mapa.set("nombre","Matias");
-mapa.set("apellido","Arias");
-mapa.set("edad",30);
+      const ws = new WeakSet();
 
-console.log(mapa);
-console.log(mapa.size);
-console.log(mapa.has("correo"));
-console.log(mapa.has("nombre"));
-console.log(mapa.get("nombre"));
-mapa.set("nombre" ,"Nicolas Arias")
+      let valor1 = { valor1: 1 };
+      let valor2 = { valor2: 2 };
+      let valor3 = { valor3: 3 };
 
+      ws.add(valor1);
+      ws.add(valor2);
 
+      console.log(ws);
 
-mapa.set(19,"diecinueve");
-mapa.set(false,"falso");
-mapa.set({},{});
-console.log(mapa);
+      console.log(ws.has(valor1));
+      console.log(ws.has(valor3));
 
+      ws.delete(valor1);
 
-for (const [key, value] of mapa) {
-    console.log(`Llave: ${key} , valor: ${value}`);
-}
+      ws.add(valor1);
+      ws.add(valor2);
+      ws.add(valor3);
 
+      console.log(ws);
 
+      // setInterval(() => {
+      //     console.log(ws)
+      // } , 1000);
 
+      // setTimeout(() => {
+      //     valor1 = null;
+      //     valor2 = null;
+      //     valor3 = null;
+      // } , 5000);
 
-const mapa2 = new Map([
-    ["nombre","Matias"],
-    ["apellido","Arias"],
-    ["edad",30],
-    [null,"nulo"]
-])
-console.log(mapa2);
+      const wm = new WeakMap();
+      let llave1 = {};
+      let llave2 = {};
+      let llave3 = {};
 
-for(const [key,values] of mapa2){
-    console.log(`Llave: ${key} , valor: ${values}`);
-}
+      wm.set(llave1, 1);
+      wm.set(llave2, 2);
+      console.log(wm);
 
+      console.log(wm.has(llave1));
+      console.log(wm.has(llave3));
+      wm.delete(llave1);
+      wm.set(llave3, 3);
+      wm.set(llave1, 1);
 
-const llavesMapa2 = [...mapa2.keys()];
-const valoresMpara2 = [...mapa2.values()];
+      console.log(wm);
 
+      console.log(wm.get(llave2));
+      console.log(wm.get(llave3));
+      console.log(wm.get(llave1));
 
-
-console.log(llavesMapa2);
-console.log(valoresMpara2);
-
-
- 
-const ws = new WeakSet();
-
- let valor1 = {"valor1" : 1};
- let valor2 = {"valor2" : 2};
- let valor3 = {"valor3" : 3};
-
- ws.add(valor1);
- ws.add(valor2);
- 
-
- console.log(ws);
-
- console.log(ws.has(valor1));
-console.log(ws.has(valor3));
-
-ws.delete(valor1);
-
-ws.add(valor1);
-ws.add(valor2);
-ws.add(valor3);
-
-console.log(ws);
-
-// setInterval(() => {
-//     console.log(ws)
-// } , 1000);
- 
-
-// setTimeout(() => {
-//     valor1 = null;
-//     valor2 = null;
-//     valor3 = null;
-// } , 5000);
-    
-
-
-    const wm = new WeakMap();
-        let llave1 = {}; 
-        let llave2 = {}; 
-        let llave3 = {};
-
-        wm.set(llave1,1);
-        wm.set(llave2,2);
-        console.log(wm);
-
-        console.log(wm.has(llave1));
-        console.log(wm.has(llave3));
-        wm.delete(llave1,);
-        wm.set(llave3,3);
-        wm.set(llave1,1);
-
-        console.log(wm);
-
-        console.log(wm.get(llave2));
-        console.log(wm.get(llave3));
-        console.log(wm.get(llave1));
-
-        /*
+      /*
         Iterables e Iteradores
         Cuando hablamos que una variavbles es iterable signifivca que es una estructura de datois lineas que
         hacen que sus valores sean publicos y se puedan iterar.
         */
-        /*
+      /*
         Iterador : Mecanismo que recorre el elemtos de una estructura de datos.
         */
+
+      const iterable = "Hola mundo!";
+
+      // const iterador = iterable[Symbol.iterator]();//accedemos al iterador de iterable
+
+      // console.log(iterable);
+
+      // console.log(iterador)
+      // console.log(iterador.next());//siempre devolvera un objeto
+      // console.log(iterador.next());
+      // console.log(iterador.next());
+      // console.log(iterador.next());
+      // console.log(iterador.next());
+      // console.log(iterador.next());
+
+      // let  next = iterador.next();
+
+      // while (next.done === false) {
+      //     console.log(next.value);
+      //     next = iterador.next();
+      // }
+
+      // console.log(next);
+
+      /*los generadores sirven para volver iterables una funcion*/
+      //             function* generador(){
+      //                 yield "Hola";
+      //                 console.log("Hola consola  ")
+      //                 yield 2;
+      //                 console.log("seguimos con mas ontrucciones de codigo")
+
+      //                 yield 3;
+      //                 yield 4;
+      //                 yield 5;
+      //                 yield 6;
+      //                 console.log("Aqui termina!")
+      //             }
+
+      //             let iterador = generador();
+
+      //         for (const y of iterador) {
+      //             console.log(y);
+
+      //         }
+
+      //         const arrox = [...generador()];
+
+      //         console.log(arrox);
+
+      //         function cuadrado(valor){
+      //             setTimeout(() => {
+      //                 return console.log({valor, resultado: valor*valor})
+      //             } , Math.random() * 1000);
+
+      //         }
+
+      //         function* generator()
+      // {
+      //     console.log("inicioa generator")
+      // yield cuadrado(0);
+      // yield cuadrado(1);
+      // yield cuadrado(2);
+      // yield cuadrado(3);
+      // yield cuadrado(4);
+      // yield cuadrado(5);
+      //     console.log("finaliza generator")
+      // }
+      //     let gen = generator();
+
+      //     for (const yield of gen) {
+      //         console.log(yield);
+
+      //     }
+
+      /*Proxis ,es un nuevo mecanismoi que tiewne js que te permite
+    crear un objeto absado en un objeto literal inicial
+    en luigas de ultilizar class se utiliza un objeto literal
+    es un medio de vinculacion entre el objeto en el que te basas y el original*/
+
+//       const personaita = {
+//         nombre: "",
+//         apellido: "",
+//         edad: 0,
+//       };
+
+//       const manejador = {
+//         set(obj, prop, valor) {
+//           if (Object.keys(obj).indexOf(prop) === -1) {
+//             return console.error(
+//               `La propiedad ${prop} no existe en el objeto persona.`
+//             );
+//           }
+
+//           if (
+//             (prop === "nombre" || prop === "apelleido") &&
+//             !/^[a-zA-ZÑñÁáéÉíÍóÓúÚÜü]*$/g.test(valor)
+//           ) {
+//             return console.error(
+//               `El valor ${valor} no es valido para la propiedad ${prop}`
+//             );
+//           }
+
+//           if (prop === "edad" && !/^[1-9]*$/g.test(valor)) {
+//             return console.error(
+//               `El valor ${valor} no es valido para la propiedad ${prop}`
+//             );
+//           }
+
+//           obj[prop] = valor;
+//         },
+//       };
+
+//       const matias = new Proxy(personaita, manejador);
+//       matias.nombre = "Matias21";
+//       matias.apellido = "Arias";
+//       matias.edad = -1;
+//       matias.twitter = "mts94";
+
+//       console.log(matias);
+
+//       console.log(personaita);
+
+
+
+
+
+//       const objetoUsuarios = {
+//         [`id_${Math.round(Math.random()*100+5)}`]:"Valor Aleatorio"
         
-        const iterable = "Hola mundo!";
+//       };
 
-        
+//       console.log(objetoUsuarios);
+//       const usuarios = ["matias", "juan", "pedro", "jose"];
 
-        // const iterador = iterable[Symbol.iterator]();//accedemos al iterador de iterable
+//       usuarios.forEach((usuario,index) =>objetoUsuarios[`id_${index}`] = usuario );
 
-        // console.log(iterable);
-
-        // console.log(iterador)
-        // console.log(iterador.next());//siempre devolvera un objeto
-        // console.log(iterador.next());
-        // console.log(iterador.next());
-        // console.log(iterador.next());
-        // console.log(iterador.next());
-        // console.log(iterador.next());
-
-            // let  next = iterador.next();
-
-            // while (next.done === false) {
-            //     console.log(next.value);
-            //     next = iterador.next();
-            // }
-                
-            // console.log(next);
+//       console.log(objetoUsuarios);
 
 
-/*los generadores sirven para volver iterables una funcion*/
-            function* generador(){
-                yield "Hola";
-                console.log("Hola consola  ")
-                yield 2;
-                console.log("seguimos con mas ontrucciones de codigo")
-
-                yield 3;
-                yield 4;
-                yield 5;
-                yield 6;
-                console.log("Aqui termina!")
-            }
-
-            let iterador = generador();
-
-        for (const y of iterador) {
-            console.log(y);
-            
-        }
-
-        const arrox = [...generador()];
-
-        console.log(arrox);
-
-        function cuadrado(valor){
-            setTimeout(() => {
-                return console.log({valor, resultado: valor*valor})
-            } , Math.random() * 1000);
-
-          
-        }
 
 
-        function* generator()
-{
-    console.log("inicioa generator")
-yield cuadrado(0);
-yield cuadrado(1);
-yield cuadrado(2);
-yield cuadrado(3);
-yield cuadrado(4);
-yield cuadrado(5);
-    console.log("finaliza generator")
+//        console.log(this);
+
+//        console.log(window);
+
+//        console.log(this === window);
+
+//        this.nombre = "Contexto global";
+
+//        console.log(this.nombrer);
+
+//        function imprimir(){
+//         console.log(this.nombre);
+//        }
+// imprimir();
+//        const objt = {
+//          nombre : "Contexto global",
+//          imprimir:function(){
+//            console.log(this.nombre);
+//          }
+//        }
+// objt.imprimir();
+
+
+// const objt2 = {
+//   nombre : "contexto objeto 2",
+//   imprimir
+// }
+
+// objt2.imprimir();
+
+
+// const objt3 = {
+//          nombre : "Contexto objeto 3",
+//          imprimir:()=>{
+//            console.log(this.nombre);
+//          }
+//        }
+// objt.imprimir();
+
+
+
+
+// function Personajes(nombre){
+//   this.nombre = nombre;
+//   //return console.log(this.nombre);
+//   return function() {
+//     console.log(this.nombre);
+//   }
+// }
+
+
+// let jon = new Personajes("Matias");
+
+
+// jon();
+
+
+
+console.log(this);
+this.lugar = "contexto global";
+
+function saludar(saludo,aQuien)  {
+console.log(`${saludo} ${aQuien} desde el ${this.lugar} `);
+
 }
-    let gen = generator();
 
-    for (const yield of gen) {
-        console.log(yield);
-        
-    }
+saludar();
 
-</script>
-</body>
+
+const objt = {
+  lugar : "contexto global"
+}
+
+
+saludar.call(objt,"Hola","Matias");
+
+saludar.call(objt,"Adios","Arias");
+
+saludar.apply(objt,["Hola","Soy MtS"])
+saludar.apply(objt,["adios","Soy MatiaS"])
+
+
+const personita = {
+  nombre : "Matias",
+  saludar : function(){
+    console.log(`Hola ${this.nombre}`);
+  }
+}
+
+personita.saludar();
+
+
+
+const otraPersona = {
+  saludar : personita.saludar.bind(personita)
+}
+
+otraPersona.saludar();
+
+
+
+
+const json = {
+    cadena: "Matias",
+    numero: "28",
+    boolean: "false",
+    arreglo: ["correr", "nadar", "dormir"],
+    objeto: {
+        nombre: "Matias",
+        apellido: "Perez",
+        edad: "28",
+        genero: "masculino"
+    },
+    
+    nulo: null
+}
+
+console.log(json);
+console.log(JSON);
+console.log(JSON.parse("{}"));
+console.log(JSON.parse("true"));
+console.log(JSON.parse("false"));
+console.log(JSON.parse("[1,2,3]"));
+console.log(JSON.parse("22")); 
+console.log(JSON.parse(`"Hola mundo!"`));
+
+console.log(JSON.stringify({}));
+
+console.log(JSON.stringify(json));
+
+console.log(JSON.parse(`{"cadena": "Matias","numero": 28,"boolean": false,"arreglo": ["correr", "nadar", "dormir"],"objeto":{"nombre": "Matias","apellido": "Perez","edad": "28","genero": "masculino"},"nulo": null}`));
+
+
+
+
+    </script>
+  </body>
 </html>
